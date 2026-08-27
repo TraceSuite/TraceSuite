@@ -1,0 +1,21 @@
+---
+description: Require automated tests whenever product behavior is implemented or changed.
+alwaysApply: true
+---
+
+# Tests with every feature
+
+When adding or changing product behavior (issue, endpoint, domain rule, Android screen, Gateway route), follow `.cursor/skills/write-feature-tests/SKILL.md`.
+
+Do not open a PR or call the work done without automated tests for the new behavior, plus at least one rejection/edge case when the story has a "no puedo / si falta" rule.
+
+Skip only for docs, comments, or config/Dockerfile edits with no runtime change.
+
+```
+// ❌ BAD — feature merged with no tests
+public decimal Cachet { get; set; }
+
+// ✅ GOOD — acceptance criterion has a named test
+[Fact]
+public void Event_loop_publish_list_apply_accept_reject_with_visible_cachet() { ... }
+```
